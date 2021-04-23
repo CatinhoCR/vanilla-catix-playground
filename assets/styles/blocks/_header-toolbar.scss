@@ -1,0 +1,32 @@
+.header {
+  // @todo mobile first
+  padding: rem(20) rem(100);
+  background-color: $dark-blue;
+
+  &__nav {
+    width: 100%;
+    @include flex-children(center, space-between);
+  }
+
+  &__brand {
+    margin-right: rem(40);
+  }
+
+  &__menu {
+    @include flex-children(center, flex-start);
+  }
+
+  &__item {
+    margin-right: rem(16);
+  }
+
+  &__link {
+    @extend .link, .link--md;
+    color: $white;
+    font-weight: 700;
+
+    &:hover {
+      color: $light-blue;
+    }
+  }
+}

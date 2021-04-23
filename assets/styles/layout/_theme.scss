@@ -1,0 +1,14 @@
+.page {
+  &__content {
+    padding-left: $docked-nav-width + 18;
+    padding-top: rem(12);
+  }
+}
+
+.block {
+  &--center {
+    width: 100%;
+    max-width: rem(600);
+    margin: 0 auto;
+  }
+}

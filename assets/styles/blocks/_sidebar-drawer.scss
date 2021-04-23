@@ -1,0 +1,180 @@
+.drawer {
+  position: relative;
+
+  &__toggler {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: z('navigation');
+    padding: rem(6);
+
+    &-icon {
+      font-size: rem(44);
+    }
+  }
+
+  &__bar {
+    max-width: $expanded-nav-width;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: z('navigation');
+    transition: max-width 0.2s ease;
+  }
+
+  &__nav {
+    background-color: $sidebar-bg;
+    width: 100%;
+    max-width: 0;
+    position: relative;
+    padding: rem(80) 0 rem(40);
+    height: 100%;
+    overflow: hidden;
+    transform: translateX(-70px);
+    transition: all 0.3s linear;
+
+    &--open {
+      transform: translateX(0);
+      max-width: $docked-nav-width;
+    }
+
+    &--active,
+    &:hover {
+      max-width: $expanded-nav-width;
+    }
+  }
+
+  &__list {
+    &--bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  &__item {
+    position: relative;
+    display: block;
+    min-width: $expanded-nav-width;
+    width: 100%;
+    overflow: hidden;
+    padding: rem(16) rem(10) rem(16) 0;
+
+    &:hover {
+      overflow: visible;
+    }
+  }
+
+  &__button {
+    position: relative;
+    display: table;
+    border-collapse: collapse;
+    border-spacing: 0;
+    padding: 0;
+    transform: translateZ(0) scale(1, 1);
+    transition: all 0.3s linear;
+
+    &:hover,
+    &--active {
+      .drawer {
+        &__icon{
+
+          /* stylelint-disable-next-line */
+          path {
+            fill: $nav-hover-color;
+          }
+        }
+
+        &__img {
+          border-color: $nav-hover-color;
+        }
+
+        &__text {
+          color: $nav-hover-color;
+        }
+      }
+    }
+  }
+
+  &__icon-wrapper {
+    position: relative;
+    display: table-cell;
+    vertical-align: middle;
+    width: $docked-nav-width;
+    height: rem(36);
+  }
+
+  &__icon {
+    width: rem(24);
+
+    path {
+      fill: $white;
+    }
+  }
+
+  &__img {
+    max-width: rem(40);
+    border: 1px solid $white;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+  }
+
+  &__text {
+    position: relative;
+    display: table-cell;
+    vertical-align: middle;
+    width: $expanded-nav-width - $docked-nav-width;
+    text-align: left;
+    padding-left: rem(20);
+    font-size: rem(22);
+    color: $white;
+    // border-bottom: 1px solid $color-light-border;
+    transition: all 0.2s ease;
+  }
+
+  // Selected Menu when a submenu exists
+  &__category {
+    background-color: $dark-teal;
+    height: rem(62);
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: $docked-nav-width;
+    z-index: 1;
+    transform: translateY(-70px);
+    transition: transform 0.4s ease;
+
+    &--active {
+      transform: translateY(0);
+    }
+  }
+
+  &__subtitle {
+    padding-left: rem(20);
+    padding-top: rem(12);
+  }
+
+  &__submenu {
+    background-color: $flyout-bg;
+    position: fixed;
+    right: 0;
+    left: rem(62);
+    bottom: 0;
+    // TODO: Make 0?
+    // TODO: Either way, get current menu item opened as title of this shit fuck cunt sucker
+    top: rem(62);
+    width: rem(290);
+    height: 100%;
+    z-index: 99999;
+    padding: rem(20);
+    transform: translateX(400px);
+    transition: 0.4s transform linear;
+
+    &--open {
+      transform: translateX(0);
+      transition: 0.4s transform linear;
+    }
+  }
+}

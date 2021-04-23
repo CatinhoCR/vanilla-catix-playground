@@ -1,0 +1,10 @@
+.fxmicon {
+  max-width: rem(80);
+  transition: all 0.2s ease;
+
+  path {
+    transition: all 0.2s ease;
+    stroke: currentColor;
+    fill: currentColor;
+  }
+}

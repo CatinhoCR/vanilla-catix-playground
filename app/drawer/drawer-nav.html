@@ -1,0 +1,39 @@
+<div class="drawer__bar">
+  <div class="drawer__category" ><!-- [ngClass]="{'drawer__category--active' : isSubmenuSelected}" -->
+    <h2 class="heading heading--sm text-white drawer__subtitle">
+      <!-- {{selectedCategory}} -->
+    </h2>
+  </div>
+  <nav class="drawer__nav" id="drawer-nav"> <!-- class="drawer-nav" [ngClass]="{ 'drawer__nav--open' : isOpen, 'drawer__nav--active': isSubmenuSelected }" -->
+    <ul class="drawer__list drawer__list--top" id="drawer-nav-top"> <!-- drawer-nav__list drawer-nav-top -->
+
+    </ul>
+
+    <!-- BOTTOM FIXED ITEMS -->
+    <ul class="drawer__list drawer__list--bottom" id="drawer-nav-bottom"></ul> <!-- class="drawer-nav__list--sub drawer-nav__list drawer-nav-bottom" -->
+  </nav>
+  <!-- TODO: Rename -->
+  <!-- TODO: Populate based on selected data-target from list in flyout menu -->
+  <!-- <div class="drawer__third-level">
+    <ul class="drawer__third-list" data-submenu="proyectoUno">
+      <li class="drawer__third-item">
+        <button class="drawer__third-toggle button button--transparent">
+          <span class="label label--md text-white button__text">Garaje</span>
+        </button>
+      </li>
+      <li class="drawer__third-item">
+        <button class="drawer__third-toggle button button--transparent">
+          <span class="label label--md text-white button__text">Patio</span>
+        </button>
+      </li>
+      <li class="drawer__third-item">
+        <button class="drawer__third-toggle button button--transparent">
+          <span class="label label--md text-white button__text">Terraza</span>
+        </button>
+      </li>
+      <li class="drawer__third-item">
+        <h4>Modal Trigger here</h4>
+      </li>
+    </ul>
+  </div> -->
+</div>

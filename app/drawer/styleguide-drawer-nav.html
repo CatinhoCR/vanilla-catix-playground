@@ -1,0 +1,69 @@
+<div class="drawer__bar">
+  <div class="drawer__category" ><!-- [ngClass]="{'drawer__category--active' : isSubmenuSelected}" -->
+    <h2 class="heading heading--sm text-white drawer__subtitle">
+      <!-- {{selectedCategory}} -->
+    </h2>
+  </div>
+  <nav class="drawer__nav" id="drawer-nav"> <!-- class="drawer-nav" [ngClass]="{ 'drawer__nav--open' : isOpen, 'drawer__nav--active': isSubmenuSelected }" -->
+    <ul class="drawer__list drawer__list--top" id="drawer-nav-top"> <!-- drawer-nav__list drawer-nav-top -->
+      <li class="drawer__item"><!-- class="drawer-nav__item" -->
+        <button class="drawer__button button button--transparent">
+          <!-- class="drawer-nav__parent button button--transparent" -->
+        <!-- [ngClass]="{ 'drawer-nav__parent--active' : selectedSubmenu === item.position }" (click)="onSelectSubmenu(item)" -->
+          <div class="drawer__icon-wrapper"><!-- class="drawer-nav__parent-wrapper" -->
+            <!-- <fa-icon [icon]="mapIcons(item.nameIcon)" [classes]="['drawer-nav__parent-icon']"></fa-icon> -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="fxmicon drawer__icon" viewBox="0 0 512 512">
+              <title>Home</title>
+              <path class="fxmicon__path"
+                d="M261.56 101.28a8 8 0 00-11.06 0L66.4 277.15a8 8 0 00-2.47 5.79L63.9 448a32 32 0 0032 32H192a16 16 0 0016-16V328a8 8 0 018-8h80a8 8 0 018 8v136a16 16 0 0016 16h96.06a32 32 0 0032-32V282.94a8 8 0 00-2.47-5.79z" />
+              <path class="fxmicon__path"
+                d="M490.91 244.15l-74.8-71.56V64a16 16 0 00-16-16h-48a16 16 0 00-16 16v32l-57.92-55.38C272.77 35.14 264.71 32 256 32c-8.68 0-16.72 3.14-22.14 8.63l-212.7 203.5c-6.22 6-7 15.87-1.34 22.37A16 16 0 0043 267.56L250.5 69.28a8 8 0 0111.06 0l207.52 198.28a16 16 0 0022.59-.44c6.14-6.36 5.63-16.86-.76-22.97z" />
+            </svg>
+          </div>
+          <span class="drawer__text button__text">Dashboard</span><!-- drawer-nav__parent-text -->
+        </button>
+        <ul class="drawer__submenu">
+        <!-- *ngIf="item.hasSubmenu"
+          class="drawer-nav__flyout"
+          [ngClass]="{'drawer-nav__flyout--open': isSubmenuSelected && selectedSubmenu === item.position}" -->
+          <li class="drawer__subitem">
+            <!-- *ngFor="let subitem of item.submenu"
+            class="drawer-nav__flyout-item" -->
+            <button class="drawer__sub-button button button--transparent">
+              <!-- class="drawer-nav__flyout-link submenu-toggler button button--transparent"
+              (click)="navigateToView(subitem.url)" -->
+              {{subitem.title}}
+            </button>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <!-- BOTTOM FIXED ITEMS -->
+    <ul class="drawer__list drawer__list--bottom" id="drawer-nav-bottom"></ul> <!-- class="drawer-nav__list--sub drawer-nav__list drawer-nav-bottom" -->
+  </nav>
+  <!-- TODO: Rename -->
+  <!-- TODO: Populate based on selected data-target from list in flyout menu -->
+  <!-- <div class="drawer__third-level">
+    <ul class="drawer__third-list" data-submenu="proyectoUno">
+      <li class="drawer__third-item">
+        <button class="drawer__third-toggle button button--transparent">
+          <span class="label label--md text-white button__text">Garaje</span>
+        </button>
+      </li>
+      <li class="drawer__third-item">
+        <button class="drawer__third-toggle button button--transparent">
+          <span class="label label--md text-white button__text">Patio</span>
+        </button>
+      </li>
+      <li class="drawer__third-item">
+        <button class="drawer__third-toggle button button--transparent">
+          <span class="label label--md text-white button__text">Terraza</span>
+        </button>
+      </li>
+      <li class="drawer__third-item">
+        <h4>Modal Trigger here</h4>
+      </li>
+    </ul>
+  </div> -->
+</div>

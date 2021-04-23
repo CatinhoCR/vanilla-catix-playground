@@ -1,0 +1,107 @@
+[
+  {
+    "type": "top",
+    "position": 1,
+    "title": "Dashboard",
+    "isImage": false,
+    "icon": "home",
+    "hasSubmenu": false,
+    "url": "#/dashboard"
+  },
+  {
+    "type": "top",
+    "position": 2,
+    "title": "Proyectos",
+    "isImage": false,
+    "icon": "planet",
+    "hasSubmenu": true,
+    "submenu": [
+      {
+        "position": 1,
+        "title": "Estadio Fello Meza",
+        "type": "toggler",
+        "data": "thirdLevelName",
+        "description": "",
+        "related": 0
+      },
+      {
+        "position": 2,
+        "title": "Microgarden HQ",
+        "type": "toggler",
+        "data": "thirdLevelName",
+        "description": "",
+        "related": 0
+      },
+      {
+        "position": 3,
+        "title": "Asamblea Legislativa",
+        "type": "toggler",
+        "data": "thirdLevelName",
+        "description": "",
+        "related": 0
+      }
+    ]
+  },
+  {
+    "type": "top",
+    "position": 3,
+    "title": "Tareas",
+    "isImage": false,
+    "icon": "rocket",
+    "hasSubmenu": true,
+    "submenu": [
+      {
+        "position": 1,
+        "title": "Filtros de agua del estadio",
+        "type": "toggler",
+        "data": "thirdLevelName",
+        "description": "",
+        "related": 0
+      }
+    ]
+  },
+  {
+    "type": "top",
+    "position": 4,
+    "title": "Otro item random",
+    "isImage": false,
+    "icon": "settings",
+    "hasSubmenu": true,
+    "submenu": [
+      {
+        "position": 1,
+        "title": "Algo por acá",
+        "type": "link",
+        "data": "/",
+        "description": "",
+        "related": 0
+      }
+    ]
+  },
+  {
+    "type": "bottom",
+    "position": 100,
+    "title": "Profile",
+    "isImage": true,
+    "icon": "person",
+    "hasSubmenu": true,
+    "submenu": [
+      {
+        "position": 1,
+        "title": "My Account",
+        "type": "link",
+        "data": "#/profile/",
+        "description": "",
+        "related": 0
+      },
+      {
+        "position": 2,
+        "title": "Logout",
+        "type": "link",
+        "data": "#/welcome/",
+        "description": "",
+        "related": 0
+      }
+    ]
+  }
+]

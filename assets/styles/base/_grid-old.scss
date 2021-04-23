@@ -1,0 +1,157 @@
+// TODO: Standarize with sections.scss and grid/inner/container classes all around in php files too
+.container {
+  @include container;
+
+  &--sm {
+    @include container(sm);
+  }
+
+  &--md {
+    @include container(md);
+  }
+
+  &--lg {
+    @include container(lg);
+  }
+
+  &--xl {
+    @include container(xl);
+  }
+
+  &--xxl {
+    @include container(xxl);
+  }
+
+  &--full {
+    @include container(full);
+  }
+
+  &__flex {
+    display: flex;
+    flex-direction: column;
+  }
+
+  // TODO: Remove from all PHP files and delete
+  &--grid {
+    @include container;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px 10px;
+
+    @include break-min($xs) {
+      gap: 10px 10px;
+    }
+  }
+}
+
+.flex-box {
+  &__col {
+    &-single {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+  }
+}
+
+@include break-min($md) {
+  .container {
+    &__flex {
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: flex-start;
+    }
+
+    &__row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .col-md-6 {
+    width: 50%;
+    flex-basis: 50%;
+  }
+
+  .col-md-4 {
+    width: 32%;
+    flex-basis: 32%;
+  }
+
+  .col-set {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    &--small {
+      max-width: rem(700);
+      margin: 0 auto;
+    }
+
+    &__item {
+      width: 50%;
+      flex-basis: 50%;
+    }
+  }
+}
+
+// TODO: Remove all old __grid and replace with new
+// &__grid {
+//   @include grid(1);
+
+//   &--6-col {
+//     @include grid(2, 10px, 20px);
+//   }
+// }
+
+// @include break-min($md) {
+//   .container {
+//     &__grid {
+//       @include grid(2);
+
+//       &--6-col {
+//         @include grid(3, 10px, 30px);
+//       }
+//     }
+//   }
+// }
+
+// @include break-min($lg) {
+//   .container {
+//     &__grid {
+//       @include grid(3);
+
+//       &--6-col {
+//         @include grid(4, 10px, 40px);
+//       }
+//     }
+//   }
+// }
+
+// @include break-min($xl) {
+//   .container {
+//     &__grid {
+//       @include grid(3);
+
+//       &--4-col {
+//         @include grid(4);
+//       }
+
+//       &--6-col {
+//         @include grid(6, 10px, 40px);
+//       }
+//     }
+//   }
+// }
