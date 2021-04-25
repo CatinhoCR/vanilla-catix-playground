@@ -113,6 +113,29 @@ class DrawerView {
   handleSubmenuClick() {
     this.submenuItems.forEach((item, index) => {
       item.addEventListener('click', e => { // eslint-disable-line
+        if (!this.isSubActive) {
+          this.isSubActive = true
+          this.menuPosition = index + 1
+          item.nextElementSibling.classList.add('drawer__submenu--open')
+          this.icon.classList.add('hamburger-icon--arrow-left')
+          this.drawer.classList.add('drawer__nav--active')
+        } else if(this.isSubActive && this.menuPosition != (index + 1)) {
+          this.menuPosition = index + 1
+          this.submenuItems.forEach(button => {
+            button.nextElementSibling.classList.remove('drawer__submenu--open')
+          })
+          item.nextElementSibling.classList.add('drawer__submenu--open')
+        } else {
+          this.goBackSubmenu()
+        }
+
+        // if (this.isSubActive) {
+        //   this.goBackSubmenu()
+        // } else {
+        //
+        // }
+
+        /*
         this.submenuItems.forEach(button => {
           button.nextElementSibling.classList.remove('drawer__submenu--open')
         })
@@ -134,7 +157,9 @@ class DrawerView {
           this.icon.classList.remove('hamburger-icon--arrow-left')
           this.drawer.classList.remove('drawer__nav--active')
         }
+        */
       })
+
     })
   }
 
