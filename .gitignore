@@ -6,6 +6,7 @@ build
 
 # temporary
 assets/img/icons
+bak-*.*
 
 # misc
 .DS_Store

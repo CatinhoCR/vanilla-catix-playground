@@ -6,7 +6,6 @@ import {
   createListItem,
   createButton,
   createAnchor,
-  // createIcon,
   createSpan,
   createDiv,
 } from '../helpers/create-elements'
@@ -28,7 +27,7 @@ class DrawerView {
     this.isSubActive = false
   }
 
-  // Move to another file to reuse
+  // @todo Move to another file (icons module _container) to reuse anywhere
   mapComponentIcons() {
     this.icons = [
       {
@@ -61,17 +60,20 @@ class DrawerView {
     this.icon = document.querySelector('.hamburger-icon')
     this.navTop = this.drawer.querySelector('#drawer-nav-top')
     this.navBottom = this.drawer.querySelector('#drawer-nav-bottom')
+    this.category = document.querySelector('.drawer__category')
+    this.categoryTitle = document.querySelector('.drawer__subtitle')
     // Setting CSS Classes to be reused
     this.parentBtnClasses = ['drawer__button', 'button', 'button--transparent']
-    // TODO: submenu-toggler conditionally
-    // @todo rename classes
+    // Inner Sub Menu Fyout Buttons
     this.subBtnClasses = [
       'drawer__sub-button',
       'submenu-toggler',
       'button',
       'button--transparent',
+      'button--sm',
     ]
-    // TODO:
+    // @todo handle classes, getters, setters and DOM manipulations all around better
+
     // this.openedSubmenu = document.querySelector('.drawer-nav__flyout--open')
     // this.openDetailsCss = 'drawer-nav__flyout--sub-active'
     // this.detailsNav = document.querySelector('.drawer__third-level')
@@ -112,54 +114,40 @@ class DrawerView {
   // @todo lots of room for improvement
   handleSubmenuClick() {
     this.submenuItems.forEach((item, index) => {
-      item.addEventListener('click', e => { // eslint-disable-line
+      item.addEventListener('click', () => { // eslint-disable-line
         if (!this.isSubActive) {
+          this.category.classList.add('drawer__category--active')
+          this.categoryTitle.innerHTML = item.dataset.title
           this.isSubActive = true
           this.menuPosition = index + 1
+          item.classList.add('drawer__button--active')
           item.nextElementSibling.classList.add('drawer__submenu--open')
           this.icon.classList.add('hamburger-icon--arrow-left')
           this.drawer.classList.add('drawer__nav--active')
-        } else if(this.isSubActive && this.menuPosition != (index + 1)) {
+        } else if(this.isSubActive && this.menuPosition !== (index + 1)) {
           this.menuPosition = index + 1
           this.submenuItems.forEach(button => {
+            button.classList.remove('drawer__button--active')
             button.nextElementSibling.classList.remove('drawer__submenu--open')
           })
           item.nextElementSibling.classList.add('drawer__submenu--open')
+          item.classList.add('drawer__button--active')
+          this.categoryTitle.innerHTML = item.dataset.title
         } else {
           this.goBackSubmenu()
         }
-
-        // if (this.isSubActive) {
-        //   this.goBackSubmenu()
-        // } else {
-        //
-        // }
-
-        /*
-        this.submenuItems.forEach(button => {
-          button.nextElementSibling.classList.remove('drawer__submenu--open')
-        })
-        const SubMenu = item.nextElementSibling
-        if (!this.isSubActive) {
-          this.isSubActive = true
-          this.menuPosition = index + 1
-          SubMenu.classList.add('drawer__submenu--open')
-          this.icon.classList.add('hamburger-icon--arrow-left')
-          this.drawer.classList.add('drawer__nav--active')
-        } else if (this.isSubActive && this.menuPosition !== index + 1) {
-          this.isSubActive = true
-          this.menuPosition = index + 1
-          SubMenu.classList.add('drawer__submenu--open')
-        } else {
-          this.isSubActive = false
-          this.menuPosition = 0
-          SubMenu.classList.remove('drawer__submenu--open')
-          this.icon.classList.remove('hamburger-icon--arrow-left')
-          this.drawer.classList.remove('drawer__nav--active')
-        }
-        */
       })
+    })
+  }
 
+  handleLinkClick() {
+    this.submenuLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        this.isDocked = false
+        this.icon.classList.remove('hamburger-icon--open')
+        this.drawer.classList.remove('drawer__nav--open')
+        this.goBackSubmenu
+      })
     })
   }
 
@@ -168,16 +156,18 @@ class DrawerView {
     this.isSubActive = false
     this.menuPosition = 0
     this.submenuItems.forEach(button => {
+      button.classList.remove('drawer__button--active')
       button.nextElementSibling.classList.remove('drawer__submenu--open')
     })
     this.icon.classList.remove('hamburger-icon--arrow-left')
     this.drawer.classList.remove('drawer__nav--active')
+    this.category.classList.remove('drawer__category--active')
   }
 
   /**
    *
    * @param {*} items
-   * @returns
+   * @description Populates The Nav Items from the fetched json
    */
   async populateMenus(items) {
     if (!items) {
@@ -200,6 +190,7 @@ class DrawerView {
         button = createAnchor(this.parentBtnClasses, item.url)
         this.submenuLinks.push(button)
       }
+      button.dataset.title = item.title
       button.appendChild(wrapper)
       button.appendChild(span)
       listItem.prepend(button)

@@ -14,8 +14,8 @@ class RoutingModule {
       mode: 'hash',
       root: '/',
     })
-    // TODO: Login, Session Cookies, Auth Guards, Set Dynamic Token session
-    // TODO: Actual routes, dashboard, components, get/set query params and resp
+    // @todo Login, Session Cookies, Auth Guards, Set Dynamic Token session
+    // @todo Actual routes and get/set query params and resp
     router
       .add('dashboard', () => {
         Dashboard.init(this.viewContainer)
@@ -24,9 +24,14 @@ class RoutingModule {
         Projects.init(this.viewContainer)
       })
       .add('', () => {
-        this.viewContainer.innerHTML = '404'
-        // TODO: Wildcard route handling and AUTH GUARDS
+        // @todo Wildcard route handling and AUTH GUARDS
         console.log('webpack starterkit') // eslint-disable-line no-console
+        this.viewContainer.innerHTML = ''
+        const intro = 'Welcome, this is a pseudo base route or 404'
+        const pageTitle = document.createElement('h1')
+        pageTitle.classList.add('heading', 'heading--md')
+        pageTitle.innerHTML = intro
+        this.viewContainer.appendChild(pageTitle)
       })
   }
 }
