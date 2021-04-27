@@ -1,16 +1,38 @@
-/**
- *
- * @param {*} elem
- * @param {*} content
- * @returns
- */
-function createDomElement(elem, content = '') {
-  const e = document.createElement(elem)
-  if (content != '') {
-    e.innerHTML = content
+// @todo standarize this. Currently holds 3 dif implementations, need to cleanup and update app-wide
+
+function createDOMElement(elem, cssClasses = [], txt = '', cssId = '') {
+  if(!elem) {
+    return
   }
-  return e
+  const element = document.createElement(elem)
+  if (cssClasses.length >= 1) {
+    addCssClasses(element, cssClasses)
+  }
+  if (cssId) {
+    element.setAttribute('id', cssId)
+  }
+  if (txt) {
+    const text = document.createTextNode(txt)
+    element.appendChild(text)
+    // element.innerHTML = txt
+  }
+
+  return element
 }
+
+// function addCssClasses(element, cssClasses) {
+//   if (!element || !cssClasses) {
+//     return
+//   }
+//   if (typeof cssClasses !== 'string') {
+//     for (let i = 0; i < cssClasses.length; i++) {
+//       element.classList.add(cssClasses[i])
+//     }
+//   } else {
+//     element.classList.add(cssClasses)
+//   }
+// }
+
 
 // @todo
 function createSVGicon (icon) {
@@ -116,7 +138,7 @@ function createDiv(cssClass) {
 }
 
 export {
-  createDomElement,
+  createDOMElement,
   createSVGicon,
   createList,
   createListItem,

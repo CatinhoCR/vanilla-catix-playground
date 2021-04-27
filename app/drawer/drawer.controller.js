@@ -57,6 +57,7 @@ class Drawer {
     this.view.menuPopulated.addListener(() => {
       this.view.handleHamburgerClick()
       this.view.handleSubmenuClick()
+      this.view.handleLinkClick()
     })
     // toggleDrawer()
     // this.view.playEvent.addListener(index => {

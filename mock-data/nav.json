@@ -18,25 +18,17 @@
     "submenu": [
       {
         "position": 1,
-        "title": "Estadio Fello Meza",
-        "type": "toggler",
-        "data": "thirdLevelName",
+        "title": "Tic Tac Toe",
+        "type": "link",
+        "data": "#/tictactoe",
         "description": "",
         "related": 0
       },
       {
         "position": 2,
-        "title": "Microgarden HQ",
-        "type": "toggler",
-        "data": "thirdLevelName",
-        "description": "",
-        "related": 0
-      },
-      {
-        "position": 3,
-        "title": "Asamblea Legislativa",
-        "type": "toggler",
-        "data": "thirdLevelName",
+        "title": "Proyectos",
+        "type": "link",
+        "data": "#/projects",
         "description": "",
         "related": 0
       }
@@ -52,7 +44,7 @@
     "submenu": [
       {
         "position": 1,
-        "title": "Filtros de agua del estadio",
+        "title": "To Do",
         "type": "toggler",
         "data": "thirdLevelName",
         "description": "",

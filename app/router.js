@@ -1,6 +1,7 @@
 import Router from './_config/routing'
 import Dashboard from './dashboard/dashboard.ctrl'
 import Projects from './projects/projects.ctrl'
+import Tictactoe from './tictactoe/tictactoe.ctrl'
 
 class RoutingModule {
   constructor(container) {
@@ -23,11 +24,14 @@ class RoutingModule {
       .add('projects', () => {
         Projects.init(this.viewContainer)
       })
+      .add('tictactoe', () => {
+        Tictactoe.init(this.viewContainer)
+      })
       .add('', () => {
         // @todo Wildcard route handling and AUTH GUARDS
         console.log('webpack starterkit') // eslint-disable-line no-console
         this.viewContainer.innerHTML = ''
-        const intro = 'Welcome, this is a pseudo base route or 404'
+        const intro = 'Welcome, this is a pseudo base route or 404. Meaning view still to be done.'
         const pageTitle = document.createElement('h1')
         pageTitle.classList.add('heading', 'heading--md')
         pageTitle.innerHTML = intro

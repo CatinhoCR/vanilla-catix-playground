@@ -140,12 +140,15 @@ class DrawerView {
     })
   }
 
+  // @todo manage for all navigation clicks links (submenu too)
   handleLinkClick() {
     this.submenuLinks.forEach(link => {
-      link.addEventListener('click', () => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault()
+        console.log('a')
         this.isDocked = false
-        this.icon.classList.remove('hamburger-icon--open')
-        this.drawer.classList.remove('drawer__nav--open')
+        this.icon.classList.remove('hamburger-icon--open', 'hamburger-icon--arrow-left')
+        this.drawer.classList.remove('drawer__nav--open', 'drawer__nav--active')
         this.goBackSubmenu
       })
     })
